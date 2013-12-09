@@ -11,14 +11,14 @@ import time
 import types
 import ast
 
+# try:
+#     # Prefer lxml, if installed.
+#     from lxml import etree as ET
+# except ImportError:
 try:
-    # Prefer lxml, if installed.
-    from lxml import etree as ET
+    from xml.etree import cElementTree as ET
 except ImportError:
-    try:
-        from xml.etree import cElementTree as ET
-    except ImportError:
-        raise ImportError("No suitable ElementTree implementation was found.")
+    raise ImportError("No suitable ElementTree implementation was found.")
 
 try:
     # Prefer simplejson, if installed.
